@@ -88,6 +88,11 @@
         .cart-pulse { animation: cartPop 0.4s ease-in-out; }
         @keyframes cartPop { 0% { transform: scale(1); } 50% { transform: scale(1.4); color: #60a5fa; } 100% { transform: scale(1); } }
 
+        /* --- DELIVERY LOCATION SELECTOR --- */
+        select.loc-select { -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1em; }
+        .loc-error { animation: shakeError 0.4s ease-in-out; border-color: #ef4444 !important; background: rgba(239, 68, 68, 0.1) !important; }
+        @keyframes shakeError { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+
         /* --- PRODUCT GRID --- */
         .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
         @media (min-width: 768px) { .product-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
@@ -132,11 +137,6 @@
         input[type="text"], select { background: white; border: 1px solid rgba(0,0,0,0.1); color: #0f172a; }
         html.dark input[type="text"], html.dark select { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; }
 
-        /* --- FOOTER HONEY --- */
-        .wc-brand-footer { width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px 0; opacity: 0.5; transition: opacity 0.3s ease; margin-top: auto; }
-        .wc-brand-footer:hover { opacity: 1; }
-        .wc-brand-text { font-family: 'Poppins', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.6); font-weight: 700; margin-right: 8px; }
-        .wc-brand-icon { width: 20px; height: 20px; background: linear-gradient(135deg, #22c55e, #15803d); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #000; font-size: 9px; box-shadow: 0 0 10px rgba(34, 197, 94, 0.3); }
     </style>
 </head>
 <body>
@@ -180,13 +180,18 @@
     </nav>
 
     <div id="mobile-menu" class="hidden fixed inset-0 z-[110] bg-white/98 dark:bg-black/98 backdrop-blur-3xl flex flex-col items-center justify-center transition-all">
-        <div class="flex flex-col items-center space-y-6 text-2xl font-black w-full mb-8 tracking-wide text-gray-900 dark:text-white">
+        <div class="flex flex-col items-center space-y-4 text-xl font-black w-full mb-6 tracking-wide text-gray-900 dark:text-white">
             <button onclick="navigateFromMenu('home')" class="hover:text-blue-500 w-full py-2">HOME</button>
             <button onclick="navigateFromMenu('catalog')" class="hover:text-blue-500 w-full py-2">SHOP ALL</button>
             <button onclick="navigateFromMenu('compare-page')" class="hover:text-blue-500 w-full py-2">COMPARE</button>
             <button onclick="navigateFromMenu('wishlist-page')" class="hover:text-pink-500 w-full py-2">WISHLIST</button>
             <button onclick="navigateFromMenu('contact-page')" class="hover:text-blue-500 w-full py-2">CONTACT</button>
-            <button onclick="toggleMobileMenu()" class="mt-10 text-sm text-gray-500 dark:text-white/40 border border-gray-200 dark:border-white/10 px-8 py-3 rounded-full font-bold">CLOSE</button>
+            
+            <a href="https://www.instagram.com/iphone__hub_ke?igsh=MWtndmpkcTZkZWgzNQ==" target="_blank" class="mt-4 text-3xl text-pink-500 hover:text-pink-400 transition-transform active:scale-95">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+            <button onclick="toggleMobileMenu()" class="mt-8 text-xs text-gray-500 dark:text-white/40 border border-gray-200 dark:border-white/10 px-6 py-2.5 rounded-full font-bold">CLOSE</button>
         </div>
     </div>
 
@@ -228,8 +233,8 @@
                 </div>
             </div>
             
-            <div class="w-full flex justify-center py-6 mt-auto border-t border-gray-200 dark:border-white/5 bg-white/50 dark:bg-black/50 backdrop-blur-md">
-                <a href="https://www.whats-cart.com/" target="_blank" class="flex flex-row items-center justify-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <div class="w-full flex justify-center py-6 mt-auto">
+                <a href="https://www.whats-cart.com/" target="_blank" class="flex flex-row items-center justify-center gap-2 opacity-100 transition-opacity">
                     <span class="font-sans text-[10px] text-gray-500 dark:text-white/60 uppercase tracking-[0.2em] font-bold">POWERED BY</span>
                     <div class="w-5 h-5 bg-gradient-to-br from-[#22c55e] to-[#15803d] rounded flex items-center justify-center text-black text-[10px] shadow-sm"><i class="fas fa-shopping-cart"></i></div>
                 </a>
@@ -294,7 +299,7 @@
                             </div>
                         
                         <div class="w-full flex justify-center py-6 mt-auto">
-                            <a href="https://www.whats-cart.com/" target="_blank" class="flex flex-row items-center justify-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                            <a href="https://www.whats-cart.com/" target="_blank" class="flex flex-row items-center justify-center gap-2 opacity-100 transition-opacity">
                                 <span class="font-sans text-[10px] text-gray-500 dark:text-white/60 uppercase tracking-[0.2em] font-bold">POWERED BY</span>
                                 <div class="w-5 h-5 bg-gradient-to-br from-[#22c55e] to-[#15803d] rounded flex items-center justify-center text-black text-[10px] shadow-sm"><i class="fas fa-shopping-cart"></i></div>
                             </a>
@@ -374,7 +379,7 @@
                                 🛒 ADD TO TRAY
                             </button>
                             <button id="buyBtn" onclick="buyNow()" class="flex-1 bg-[#25D366] hover:bg-[#20bd5a] text-white font-black py-3.5 md:py-4 rounded-full flex items-center justify-center gap-2 transition-all active:scale-95 shadow-[0_8px_24px_rgba(37,211,102,0.4)] text-xs md:text-sm uppercase tracking-wide">
-                                <i class="fab fa-whatsapp text-sm md:text-xl"></i> <span id="buyBtnText">ORDER VIA WHATSAPP</span>
+                                <i class="fas fa-bolt text-sm md:text-xl"></i> <span id="buyBtnText">ORDER VIA WHATSAPP</span>
                             </button>
                         </div>
 
@@ -397,7 +402,7 @@
                 </div>
                 
                 <div class="w-full flex justify-center py-4 md:py-6 mt-auto">
-                    <a href="https://www.whats-cart.com/" target="_blank" class="flex flex-row items-center justify-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                    <a href="https://www.whats-cart.com/" target="_blank" class="flex flex-row items-center justify-center gap-2 opacity-100 transition-opacity">
                         <span class="font-sans text-[10px] text-gray-500 dark:text-white/60 uppercase tracking-[0.2em] font-bold">POWERED BY</span>
                         <div class="w-5 h-5 bg-gradient-to-br from-[#22c55e] to-[#15803d] rounded flex items-center justify-center text-black text-[10px] shadow-sm"><i class="fas fa-shopping-cart"></i></div>
                     </a>
@@ -429,11 +434,11 @@
                         </div>
 
                         <button onclick="checkoutCart()" class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white py-3.5 md:py-4 rounded-full font-black transition-all flex items-center justify-center gap-2 md:gap-3 shadow-[0_8px_24px_rgba(37,211,102,0.4)] active:scale-95 tracking-wide text-[11px] md:text-sm uppercase">
-                            <i class="fab fa-whatsapp text-sm md:text-xl"></i> ORDER VIA WHATSAPP
+                            <i class="fas fa-bolt text-sm md:text-xl"></i> ORDER VIA WHATSAPP
                         </button>
                         
                         <div class="w-full flex justify-center pt-5 md:pt-6 mt-2 md:mt-4">
-                            <a href="https://www.whats-cart.com/" target="_blank" class="flex flex-row items-center justify-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                            <a href="https://www.whats-cart.com/" target="_blank" class="flex flex-row items-center justify-center gap-2 opacity-100 transition-opacity">
                                 <span class="font-sans text-[10px] text-gray-500 dark:text-white/60 uppercase tracking-[0.2em] font-bold">POWERED BY</span>
                                 <div class="w-5 h-5 bg-gradient-to-br from-[#22c55e] to-[#15803d] rounded flex items-center justify-center text-black text-[10px] shadow-sm"><i class="fas fa-shopping-cart"></i></div>
                             </a>
@@ -460,7 +465,7 @@
                 </div>
 
                 <div class="w-full flex justify-center py-6 mt-auto">
-                    <a href="https://www.whats-cart.com/" target="_blank" class="flex flex-row items-center justify-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                    <a href="https://www.whats-cart.com/" target="_blank" class="flex flex-row items-center justify-center gap-2 opacity-100 transition-opacity">
                         <span class="font-sans text-[10px] text-gray-500 dark:text-white/60 uppercase tracking-[0.2em] font-bold">POWERED BY</span>
                         <div class="w-5 h-5 bg-gradient-to-br from-[#22c55e] to-[#15803d] rounded flex items-center justify-center text-black text-[10px] shadow-sm"><i class="fas fa-shopping-cart"></i></div>
                     </a>
@@ -490,7 +495,7 @@
                 </div>
 
                 <div class="w-full flex justify-center py-6 mt-auto pt-8 md:pt-10">
-                    <a href="https://www.whats-cart.com/" target="_blank" class="flex flex-row items-center justify-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                    <a href="https://www.whats-cart.com/" target="_blank" class="flex flex-row items-center justify-center gap-2 opacity-100 transition-opacity">
                         <span class="font-sans text-[10px] text-gray-500 dark:text-white/60 uppercase tracking-[0.2em] font-bold">POWERED BY</span>
                         <div class="w-5 h-5 bg-gradient-to-br from-[#22c55e] to-[#15803d] rounded flex items-center justify-center text-black text-[10px] shadow-sm"><i class="fas fa-shopping-cart"></i></div>
                     </a>
@@ -531,7 +536,7 @@
                 </div>
                 
                 <div class="w-full flex justify-center py-6 mt-auto">
-                    <a href="https://www.whats-cart.com/" target="_blank" class="flex flex-row items-center justify-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                    <a href="https://www.whats-cart.com/" target="_blank" class="flex flex-row items-center justify-center gap-2 opacity-100 transition-opacity">
                         <span class="font-sans text-[10px] text-gray-500 dark:text-white/60 uppercase tracking-[0.2em] font-bold">POWERED BY</span>
                         <div class="w-5 h-5 bg-gradient-to-br from-[#22c55e] to-[#15803d] rounded flex items-center justify-center text-black text-[10px] shadow-sm"><i class="fas fa-shopping-cart"></i></div>
                     </a>
@@ -1014,7 +1019,7 @@
                 cart.push(item); 
             }
             
-            localStorage.setItem('ih_cart_v10', JSON.stringify(cart)); 
+            localStorage.setItem('ih_cart_v11', JSON.stringify(cart)); 
             updateCartUI(); 
             showToast("Added to Tray"); 
             
@@ -1032,20 +1037,20 @@
             if (item.qty <= 0) {
                 cart = cart.filter(i => i.cartId !== cartId);
             }
-            localStorage.setItem('ih_cart_v10', JSON.stringify(cart)); 
+            localStorage.setItem('ih_cart_v11', JSON.stringify(cart)); 
             updateCartUI(); 
         }
 
         function removeFromCart(cartId) { 
             cart = cart.filter(item => item.cartId !== cartId); 
-            localStorage.setItem('ih_cart_v10', JSON.stringify(cart)); 
+            localStorage.setItem('ih_cart_v11', JSON.stringify(cart)); 
             updateCartUI(); 
         }
 
         function clearCart() { 
             if(confirm("Clear all items from your tray?")) { 
                 cart = []; 
-                localStorage.setItem('ih_cart_v10', JSON.stringify(cart)); 
+                localStorage.setItem('ih_cart_v11', JSON.stringify(cart)); 
                 updateCartUI(); 
             } 
         }
@@ -1149,7 +1154,7 @@
                 wishlist.push(productId); 
                 showToast("Added to Wishlist"); 
             } 
-            localStorage.setItem('ih_wishlist_v10', JSON.stringify(wishlist)); 
+            localStorage.setItem('ih_wishlist_v11', JSON.stringify(wishlist)); 
             updateWishlistUI(); 
             
             // Re-render current grids to update heart icons
@@ -1230,7 +1235,7 @@
                 showToast("Added to Compare");
             } 
             
-            localStorage.setItem('ih_compare_v10', JSON.stringify(compareList)); 
+            localStorage.setItem('ih_compare_v11', JSON.stringify(compareList)); 
             
             // If on product detail page, update the big button
             if (currentSelection.product && currentSelection.product.id === productId) {
@@ -1296,7 +1301,7 @@
 
         function clearCompare() { 
             compareList = []; 
-            localStorage.setItem('ih_compare_v10', JSON.stringify(compareList)); 
+            localStorage.setItem('ih_compare_v11', JSON.stringify(compareList)); 
             
             // Reset detail page button if active
             const compareBtn = document.getElementById('detail-compare-btn');
