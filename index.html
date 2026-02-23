@@ -20,7 +20,8 @@
                     },
                     colors: {
                         brand: { 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb' },
-                        dark: { 900: '#050505', 800: '#111111', 700: '#1a1a1a' }
+                        dark: { 900: '#050505', 800: '#111111', 700: '#1a1a1a' },
+                        whatsapp: { 400: '#25D366', 500: '#128C7E' }
                     }
                 }
             }
@@ -77,12 +78,7 @@
         html.dark .melon-img { filter: drop-shadow(-10px 10px 20px rgba(0,0,0,0.5)); }
         .melon-card:hover .melon-img { transform: translateY(-50%) scale(1.05); right: 8%; }
         
-        /* Reduced UI for Mobile */
-        @media (max-width: 768px) { 
-            .melon-card { height: 160px; padding: 16px; border-radius: 20px; } 
-            .melon-img { right: -5%; height: 120%; } 
-            h1.text-5xl { font-size: 2.75rem; }
-        }
+        @media (max-width: 768px) { .melon-card { height: 200px; padding: 20px; } .melon-img { right: 0; height: 100%; } h1.text-5xl { font-size: 2.75rem; } }
 
         /* --- CART HONEY & WISHLIST --- */
         .cart-icon-wrapper, .wishlist-icon-wrapper, .theme-icon-wrapper { position: relative; cursor: pointer; color: #475569; transition: color 0.3s; }
@@ -103,15 +99,6 @@
         /* --- TOAST --- */
         #toast { position: fixed; top: 90px; left: 50%; transform: translateX(-50%) translateY(-50px); background: #3b82f6; color: white; padding: 12px 24px; border-radius: 50px; font-size: 13px; font-weight: 700; z-index: 9999; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4); }
         #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-
-        /* --- COMPARE TABLE --- */
-        .compare-table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 16px; border: 1px solid rgba(0,0,0,0.05); background: white; }
-        html.dark .compare-table-wrapper { background: #0a0a0a; border-color: rgba(255,255,255,0.05); }
-        .compare-table { width: 100%; min-width: 700px; border-collapse: collapse; }
-        .compare-table th, .compare-table td { padding: 15px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.05); }
-        html.dark .compare-table th, html.dark .compare-table td { border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .compare-table th:first-child, .compare-table td:first-child { text-align: left; position: sticky; left: 0; background: #f8fafc; z-index: 10; font-weight: bold; color: #64748b; border-right: 1px solid rgba(0,0,0,0.05); }
-        html.dark .compare-table th:first-child, html.dark .compare-table td:first-child { background: #050505; color: rgba(255,255,255,0.5); border-right: 1px solid rgba(255,255,255,0.05); }
         
         /* --- LOADER --- */
         #loader { position: fixed; inset: 0; background: #ffffff; z-index: 99999; display: flex; justify-content: center; align-items: center; transition: opacity 0.3s ease; }
@@ -339,6 +326,11 @@
                             <div id="price-tag" class="text-2xl md:text-3xl font-black text-blue-500"></div>
                             <div id="old-price" class="text-sm md:text-lg text-gray-400 dark:text-white/40 line-through font-bold mb-1 hidden"></div>
                         </div>
+                        
+                        <div id="fomo-banner" class="hidden mb-6 bg-red-500/10 border border-red-500/20 rounded-xl p-3 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-500 animate-pulse shrink-0"><i class="fas fa-fire"></i></div>
+                            <p class="text-xs font-bold text-red-600 dark:text-red-400 leading-tight">High Demand! <span class="text-gray-700 dark:text-white/70 font-medium block">Only 2 items left in stock. 14 people are viewing this.</span></p>
+                        </div>
 
                         <p id="product-description" class="text-[11px] md:text-sm text-gray-600 dark:text-white/70 leading-relaxed mb-6 md:mb-8 font-medium"></p>
 
@@ -360,8 +352,8 @@
                             <button id="addCartBtn" onclick="addToCart()" class="flex-1 bg-gray-200 text-gray-900 dark:bg-white/10 dark:hover:bg-white/20 border border-transparent dark:border-white/20 dark:text-white font-black py-3.5 md:py-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-2 transition-all active:scale-95 text-xs md:text-sm">
                                 🛒 ADD TO TRAY
                             </button>
-                            <button id="buyBtn" onclick="buyNow()" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white font-black py-3.5 md:py-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-2 transition-all active:scale-95 shadow-[0_0_20px_rgba(59,130,246,0.3)] text-xs md:text-sm">
-                                <i class="fas fa-bolt text-sm md:text-lg"></i> <span id="buyBtnText">FAST CHECKOUT</span>
+                            <button id="buyBtn" onclick="buyNow()" class="flex-1 bg-[#25D366] hover:bg-[#128C7E] text-white font-black py-3.5 md:py-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-2 transition-all active:scale-95 shadow-[0_0_20px_rgba(37,211,102,0.3)] text-xs md:text-sm">
+                                <i class="fab fa-whatsapp text-sm md:text-lg"></i> <span id="buyBtnText">ORDER VIA WHATSAPP</span>
                             </button>
                         </div>
 
@@ -415,8 +407,8 @@
                             <span id="cart-total" class="text-xl md:text-3xl font-black text-gray-900 dark:text-white">KSh 0</span>
                         </div>
 
-                        <button onclick="checkoutCart()" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-3.5 md:py-4 rounded-xl md:rounded-2xl font-black transition-all flex items-center justify-center gap-2 md:gap-3 shadow-[0_0_20px_rgba(59,130,246,0.3)] active:scale-95 tracking-wide text-[11px] md:text-sm">
-                            <i class="fas fa-bolt text-sm md:text-xl"></i> FAST CHECKOUT
+                        <button onclick="checkoutCart()" class="w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-3.5 md:py-4 rounded-xl md:rounded-2xl font-black transition-all flex items-center justify-center gap-2 md:gap-3 shadow-[0_0_20px_rgba(37,211,102,0.3)] active:scale-95 tracking-wide text-[11px] md:text-sm">
+                            <i class="fab fa-whatsapp text-sm md:text-xl"></i> ORDER VIA WHATSAPP
                         </button>
                         
                         <div class="w-full flex justify-center pt-5 md:pt-6 mt-2 md:mt-4">
@@ -466,14 +458,8 @@
                 
                 <h2 class="text-2xl md:text-3xl font-display font-black mb-6 md:mb-8 tracking-tight text-gray-900 dark:text-white">Compare Specs</h2>
                 
-                <div id="compare-container" class="flex-1">
-                    <div class="compare-table-wrapper">
-                        <table class="compare-table text-[11px] md:text-sm">
-                            <thead id="compare-head"></thead>
-                            <tbody id="compare-body"></tbody>
-                        </table>
+                <div id="compare-container" class="flex-1 w-full">
                     </div>
-                </div>
                 
                 <div id="compare-empty" class="hidden flex-1 flex flex-col items-center justify-center opacity-50 py-10">
                     <i class="fas fa-exchange-alt text-5xl md:text-6xl mb-4 md:mb-6 text-purple-500/30"></i>
@@ -492,16 +478,6 @@
         </section>
 
     </main>
-
-    <div id="compare-bar" class="hidden md:flex fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-[rgba(10,10,10,0.98)] backdrop-blur-[20px] border-t border-gray-200 dark:border-white/10 p-[15px_20px] z-[100] translate-y-full transition-transform duration-300 ease-in-out shadow-[0_-10px_40px_rgba(0,0,0,0.1)] dark:shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
-        <div class="max-w-7xl mx-auto flex items-center justify-between w-full">
-            <div class="flex items-center gap-4">
-                <span class="text-xs font-black uppercase tracking-widest text-purple-600 dark:text-purple-400">Compare (<span id="compare-count">0</span>/2)</span>
-                <div id="compare-thumbs" class="flex gap-3"></div>
-            </div>
-            <button onclick="showPage('compare-page'); renderCompare();" class="px-6 py-3 rounded-xl text-xs font-black bg-purple-600 text-white shadow-[0_0_15px_rgba(168,85,247,0.4)] active:scale-95 transition-transform uppercase tracking-wider">Compare Now</button>
-        </div>
-    </div>
 
     <div id="mobile-compare-popup" class="md:hidden fixed bottom-4 left-4 right-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-white/10 rounded-2xl p-4 shadow-2xl z-[100] transform translate-y-[150%] transition-transform duration-300 flex justify-between items-center">
         <div class="flex items-center gap-3">
@@ -589,10 +565,10 @@
         let currentSelection = { product: null, storage: '', sim: 'eSIM Only', finalPrice: 0 };
         let activeCategoryFilter = 'all';
         
-        // Storage Keys - updated to v8 for empty load state
-        let cart = JSON.parse(localStorage.getItem('ih_cart_v8')) || [];
-        let wishlist = JSON.parse(localStorage.getItem('ih_wishlist_v8')) || [];
-        let compareList = JSON.parse(localStorage.getItem('ih_compare_v8')) || [];
+        // Storage Keys - updated to v9 for empty load state
+        let cart = JSON.parse(localStorage.getItem('ih_cart_v9')) || [];
+        let wishlist = JSON.parse(localStorage.getItem('ih_wishlist_v9')) || [];
+        let compareList = JSON.parse(localStorage.getItem('ih_compare_v9')) || [];
 
         // --- THEME LOGIC ---
         function toggleTheme() {
@@ -764,7 +740,7 @@
                 let discountBadge = p.oldPrice ? `<div class="discount-badge">-${Math.round((1 - p.basePrice/p.oldPrice) * 100)}%</div>` : ''; 
                 
                 container.innerHTML += `
-                    <div class="glass p-2 md:p-4 rounded-2xl md:rounded-3xl flex flex-col items-center justify-between min-h-[200px] md:min-h-[240px] relative overflow-hidden group cursor-pointer" onclick="selectProduct(${index})">
+                    <div class="glass p-3 md:p-4 rounded-2xl md:rounded-3xl flex flex-col items-center justify-between min-h-[200px] md:min-h-[240px] relative overflow-hidden group cursor-pointer" onclick="selectProduct(${index})">
                         ${discountBadge}
                         
                         <div class="absolute top-2 right-2 md:top-3 md:right-3 flex flex-col gap-2 z-10">
@@ -822,9 +798,9 @@
             
             if (p.available) { 
                 buyBtn.disabled = false; addCartBtn.disabled = false; 
-                buyBtn.className = "flex-1 bg-blue-600 hover:bg-blue-500 text-white font-black py-3.5 md:py-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-2 transition-all active:scale-95 shadow-[0_0_20px_rgba(59,130,246,0.3)] text-xs md:text-sm"; 
+                buyBtn.className = "flex-1 bg-[#25D366] hover:bg-[#128C7E] text-white font-black py-3.5 md:py-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-2 transition-all active:scale-95 shadow-[0_0_20px_rgba(37,211,102,0.3)] text-xs md:text-sm"; 
                 addCartBtn.className = "flex-1 bg-gray-200 text-gray-900 dark:bg-white/10 dark:hover:bg-white/20 border border-transparent dark:border-white/20 dark:text-white font-black py-3.5 md:py-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-2 transition-all active:scale-95 text-xs md:text-sm"; 
-                buyBtnText.innerText = "FAST CHECKOUT"; 
+                buyBtnText.innerText = "ORDER VIA WHATSAPP"; 
             } else { 
                 buyBtn.disabled = true; addCartBtn.disabled = true; 
                 buyBtn.className = "flex-1 bg-gray-300 dark:bg-gray-800 text-gray-500 font-black py-3.5 md:py-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-2 cursor-not-allowed text-xs md:text-sm"; 
@@ -844,6 +820,13 @@
             
             document.getElementById('sim-section').style.display = (p.type === 'laptop') ? 'none' : 'block'; 
             
+            // iPhone 17 FOMO Implementation
+            if (p.id === 'ip17') {
+                document.getElementById('fomo-banner').classList.remove('hidden');
+            } else {
+                document.getElementById('fomo-banner').classList.add('hidden');
+            }
+
             document.getElementById('product-description').innerText = p.description; 
             
             const specsTable = document.getElementById('specs-table'); 
@@ -853,7 +836,6 @@
             } 
             
             updateStorageHTML(p); 
-            switchTab('specs'); 
             showPage('product-detail-view'); 
         }
 
@@ -861,20 +843,6 @@
             document.getElementById('mainImage').src = src; 
             document.querySelectorAll('.gallery-thumb').forEach(d => { d.classList.remove('border-blue-500'); d.classList.add('dark:border-white/10', 'border-gray-200'); }); 
             element.classList.remove('dark:border-white/10', 'border-gray-200'); element.classList.add('border-blue-500'); 
-        }
-
-        function switchTab(tab) { 
-            document.querySelectorAll('.tab-btn').forEach(btn => { btn.classList.remove('active', 'text-blue-500', 'border-blue-500'); btn.classList.add('text-gray-500', 'dark:text-white/50', 'border-transparent'); }); 
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active')); 
-            
-            const activeBtn = document.querySelector(`[data-tab="${tab}"]`);
-            if(activeBtn) {
-                activeBtn.classList.remove('text-gray-500', 'dark:text-white/50', 'border-transparent');
-                activeBtn.classList.add('active', 'text-blue-500', 'border-blue-500'); 
-            }
-            
-            const tabContent = document.getElementById(`tab-${tab}`);
-            if(tabContent) tabContent.classList.add('active'); 
         }
 
         function updateStorageHTML(product) { 
@@ -886,7 +854,7 @@
                     currentSelection.storage = opt.size; 
                     document.getElementById('price-tag').innerText = 'KSh ' + currentSelection.finalPrice.toLocaleString(); 
                 } 
-                container.innerHTML += `<button onclick="setStorage(this, '${opt.size}', ${product.basePrice + opt.priceAdd})" class="storage-btn bg-gray-100 dark:bg-white/5 border ${idx === 0 ? 'border-blue-500 text-blue-600 dark:text-blue-400' : 'border-gray-200 dark:border-white/10 text-gray-700 dark:text-white/70'} py-3 md:py-4 rounded-xl text-[10px] md:text-xs font-bold transition-colors">${opt.size}</button>`; 
+                container.innerHTML += `<button onclick="setStorage(this, '${opt.size}', ${product.basePrice + opt.priceAdd})" class="storage-btn bg-gray-100 dark:bg-white/5 border ${idx === 0 ? 'border-blue-500 text-blue-600 dark:text-blue-400' : 'border-gray-200 dark:border-white/10 text-gray-700 dark:text-white/70'} py-2.5 md:py-4 rounded-xl text-[10px] md:text-xs font-bold transition-colors">${opt.size}</button>`; 
             }); 
         }
 
@@ -1236,8 +1204,6 @@
         function renderCompare() { 
             const container = document.getElementById('compare-container'); 
             const emptyState = document.getElementById('compare-empty'); 
-            const head = document.getElementById('compare-head'); 
-            const body = document.getElementById('compare-body'); 
             
             if (compareList.length === 0) { 
                 container.classList.add('hidden'); 
@@ -1250,39 +1216,47 @@
             
             const compareProducts = compareList.map(id => products.find(p => p.id === id)).filter(p => p); 
             
-            // Build Headers
-            head.innerHTML = `<tr>
-                <th class="text-left p-3 md:p-4 text-[10px] md:text-xs text-gray-500 dark:text-white/50 uppercase tracking-widest border-b border-r border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-[#050505] sticky left-0 z-10 w-1/4">Specs</th>
-                ${compareProducts.map(p => `
-                    <th class="p-3 md:p-4 text-center border-b border-gray-200 dark:border-white/5 w-[37.5%] bg-white dark:bg-[#0a0a0a]">
-                        <div class="h-20 md:h-24 flex items-center justify-center mb-2 md:mb-3 bg-gray-50 dark:bg-white/5 rounded-xl p-2 relative">
-                            <img src="${p.image}" class="max-h-full object-contain">
-                            <button onclick="toggleCompare('${p.id}')" class="absolute -top-2 -right-2 w-5 h-5 md:w-6 md:h-6 bg-red-100 dark:bg-red-500/20 text-red-500 rounded-full flex items-center justify-center text-[8px] md:text-[10px] hover:bg-red-500 hover:text-white transition"><i class="fas fa-times"></i></button>
-                        </div>
-                        <p class="text-[11px] md:text-sm font-black text-gray-900 dark:text-white">${p.name}</p>
-                        <p class="text-[10px] md:text-xs text-blue-600 dark:text-blue-400 font-bold mt-1">KSh ${p.basePrice.toLocaleString()}</p>
-                        <button onclick="quickAddToCart('${p.id}')" class="mt-2 md:mt-3 bg-gray-100 text-gray-900 dark:bg-white/10 dark:hover:bg-white/20 dark:text-white hover:bg-gray-200 text-[10px] md:text-xs font-bold py-1.5 md:py-2 px-3 md:px-4 rounded-lg transition-colors">🛒 Add to Tray</button>
-                    </th>`).join('')}
-            </tr>`; 
+            // Build Mobile/Desktop friendly Grid instead of table
+            let html = `<div class="grid grid-cols-${compareProducts.length} gap-3 md:gap-6 mb-6">`;
             
-            // Collect all unique spec keys across selected products
+            // Headers (Images, Titles, Add to Cart)
+            compareProducts.forEach(p => {
+                html += `
+                <div class="relative bg-white dark:bg-[#0a0a0a] p-3 md:p-6 rounded-2xl md:rounded-3xl border border-gray-200 dark:border-white/5 flex flex-col items-center text-center">
+                    <button onclick="toggleCompare('${p.id}')" class="absolute top-2 right-2 md:top-3 md:right-3 w-6 h-6 md:w-8 md:h-8 bg-red-100 dark:bg-red-500/20 text-red-500 rounded-full flex items-center justify-center text-[10px] md:text-xs hover:bg-red-500 hover:text-white transition"><i class="fas fa-times"></i></button>
+                    <div class="h-20 md:h-32 w-full flex items-center justify-center mb-3 md:mb-4 bg-gray-50 dark:bg-white/5 rounded-xl p-2">
+                        <img src="${p.image}" class="max-h-full object-contain">
+                    </div>
+                    <p class="text-[11px] md:text-sm font-black text-gray-900 dark:text-white leading-tight">${p.name}</p>
+                    <p class="text-[10px] md:text-xs text-blue-600 dark:text-blue-400 font-bold mt-1 mb-3 md:mb-4">KSh ${p.basePrice.toLocaleString()}</p>
+                    <button onclick="quickAddToCart('${p.id}')" class="w-full bg-gray-100 text-gray-900 dark:bg-white/10 dark:hover:bg-white/20 dark:text-white hover:bg-gray-200 text-[10px] md:text-xs font-bold py-2 md:py-2.5 rounded-lg md:rounded-xl transition-colors mt-auto">🛒 Add to Tray</button>
+                </div>`;
+            });
+            html += `</div>`;
+
+            // Specs Section
             const allSpecKeys = new Set();
             compareProducts.forEach(p => {
                 if(p.fullSpecs) Object.keys(p.fullSpecs).forEach(k => allSpecKeys.add(k));
             });
 
-            body.innerHTML = ''; 
-            
-            // Build rows dynamically based on specs
+            html += `<div class="space-y-3 md:space-y-4">`;
             allSpecKeys.forEach(key => {
-                body.innerHTML += `<tr>
-                    <td class="p-3 md:p-4 text-[10px] md:text-xs font-bold text-gray-500 dark:text-white/50 bg-gray-50 dark:bg-[#050505] border-b border-r border-gray-200 dark:border-white/5 sticky left-0 z-10">${key}</td>
-                    ${compareProducts.map(p => {
-                        const val = p.fullSpecs && p.fullSpecs[key] ? p.fullSpecs[key] : '<span class="text-gray-300 dark:text-white/20">-</span>';
-                        return `<td class="p-3 md:p-4 text-center text-[10px] md:text-sm font-medium border-b border-gray-200 dark:border-white/5 text-gray-800 dark:text-white/80 bg-white dark:bg-[#0a0a0a]">${val}</td>`;
-                    }).join('')}
-                </tr>`;
+                html += `
+                <div class="bg-gray-50 dark:bg-[#0a0a0a] rounded-xl md:rounded-2xl p-3 md:p-5 border border-gray-100 dark:border-white/5">
+                    <h4 class="text-[9px] md:text-xs font-bold text-gray-500 dark:text-white/50 uppercase tracking-widest text-center mb-2 md:mb-3">${key}</h4>
+                    <div class="grid grid-cols-${compareProducts.length} gap-3 md:gap-6">`;
+                
+                compareProducts.forEach(p => {
+                    const val = p.fullSpecs && p.fullSpecs[key] ? p.fullSpecs[key] : '<span class="text-gray-300 dark:text-white/20">-</span>';
+                    html += `<div class="text-center text-[10px] md:text-sm font-medium text-gray-800 dark:text-white/80 px-1">${val}</div>`;
+                });
+
+                html += `</div></div>`;
             });
+            html += `</div>`;
+            
+            container.innerHTML = html;
         }
 
         // --- UTILS ---
