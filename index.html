@@ -88,11 +88,6 @@
         .cart-pulse { animation: cartPop 0.4s ease-in-out; }
         @keyframes cartPop { 0% { transform: scale(1); } 50% { transform: scale(1.4); color: #60a5fa; } 100% { transform: scale(1); } }
 
-        /* --- DELIVERY LOCATION SELECTOR --- */
-        select.loc-select { -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1em; }
-        .loc-error { animation: shakeError 0.4s ease-in-out; border-color: #ef4444 !important; background: rgba(239, 68, 68, 0.1) !important; }
-        @keyframes shakeError { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
-
         /* --- PRODUCT GRID --- */
         .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
         @media (min-width: 768px) { .product-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
@@ -167,6 +162,7 @@
             <button onclick="showPage('home')" class="hover:text-gray-900 dark:hover:text-white transition">HOME</button>
             <button onclick="showPage('catalog')" class="hover:text-gray-900 dark:hover:text-white transition">SHOP</button>
             <button onclick="showPage('compare-page')" class="hover:text-gray-900 dark:hover:text-white transition">COMPARE</button>
+            <button onclick="showPage('contact-page')" class="hover:text-gray-900 dark:hover:text-white transition">CONTACT</button>
         </div>
 
         <div class="flex items-center gap-4">
@@ -189,6 +185,7 @@
             <button onclick="navigateFromMenu('catalog')" class="hover:text-blue-500 w-full py-2">SHOP ALL</button>
             <button onclick="navigateFromMenu('compare-page')" class="hover:text-blue-500 w-full py-2">COMPARE</button>
             <button onclick="navigateFromMenu('wishlist-page')" class="hover:text-pink-500 w-full py-2">WISHLIST</button>
+            <button onclick="navigateFromMenu('contact-page')" class="hover:text-blue-500 w-full py-2">CONTACT</button>
             <button onclick="toggleMobileMenu()" class="mt-10 text-sm text-gray-500 dark:text-white/40 border border-gray-200 dark:border-white/10 px-8 py-3 rounded-full font-bold">CLOSE</button>
         </div>
     </div>
@@ -501,6 +498,47 @@
             </div>
         </section>
 
+        <section id="contact-page" class="page">
+            <div class="max-w-7xl mx-auto w-full px-4 md:px-8 py-6 md:py-8 flex flex-col h-full items-center justify-center">
+                <button onclick="showPage('home')" class="absolute top-4 left-4 md:top-8 md:left-8 text-[10px] md:text-xs font-bold text-gray-500 dark:text-white/50 flex items-center hover:text-gray-900 dark:hover:text-white transition w-fit">
+                    <div class="w-6 h-6 md:w-8 md:h-8 rounded-full bg-gray-200 dark:bg-white/10 flex items-center justify-center mr-2"><i class="fas fa-arrow-left text-[10px] md:text-xs"></i></div> Back to Home
+                </button>
+
+                <div class="glass p-8 md:p-12 rounded-[30px] w-full max-w-md shadow-2xl bg-white/80 dark:bg-black/60 backdrop-blur-xl border border-gray-200 dark:border-white/10 text-center mt-10">
+                    <div class="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-500/20 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-location-dot text-blue-600 dark:text-blue-500 text-2xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-display font-black mb-2 text-gray-900 dark:text-white">IPHONEHUB</h2>
+                    <p class="text-gray-500 dark:text-white/50 text-xs uppercase tracking-widest mb-8">Nairobi, Kenya</p>
+                    
+                    <div class="bg-gray-50 dark:bg-white/5 rounded-2xl p-4 mb-8 text-left flex items-start gap-4 border border-gray-100 dark:border-transparent">
+                        <i class="fas fa-map-pin text-gray-400 dark:text-white/50 mt-1"></i>
+                        <div class="text-sm text-gray-700 dark:text-white/80 leading-relaxed">
+                            <span class="font-black block text-gray-900 dark:text-white text-base mb-1">THE BAZAAR</span>
+                            11TH FLOOR, Room 1105
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-3 mb-6">
+                        <a href="tel:0740262888" class="flex-1 bg-gray-200 dark:bg-white text-gray-900 dark:text-black py-4 rounded-xl font-black text-xs active:scale-95 transition-transform flex items-center justify-center gap-2">
+                            <i class="fas fa-phone"></i> CALL US
+                        </a>
+                        <a href="https://wa.me/254740262888" target="_blank" class="flex-1 bg-[#25D366] hover:bg-[#20bd5a] text-white py-4 rounded-xl font-black text-xs active:scale-95 transition-transform shadow-[0_4px_15px_rgba(37,211,102,0.3)] flex items-center justify-center gap-2">
+                            <i class="fab fa-whatsapp text-lg"></i> WHATSAPP
+                        </a>
+                    </div>
+                    
+                </div>
+                
+                <div class="w-full flex justify-center py-6 mt-auto">
+                    <a href="https://www.whats-cart.com/" target="_blank" class="flex flex-row items-center justify-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                        <span class="font-sans text-[10px] text-gray-500 dark:text-white/60 uppercase tracking-[0.2em] font-bold">POWERED BY</span>
+                        <div class="w-5 h-5 bg-gradient-to-br from-[#22c55e] to-[#15803d] rounded flex items-center justify-center text-black text-[10px] shadow-sm"><i class="fas fa-shopping-cart"></i></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <div id="compare-bar" class="hidden md:flex fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-[rgba(10,10,10,0.98)] backdrop-blur-[20px] border-t border-gray-200 dark:border-white/10 p-[15px_20px] z-[100] translate-y-full transition-transform duration-300 ease-in-out shadow-[0_-10px_40px_rgba(0,0,0,0.1)] dark:shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
@@ -563,7 +601,7 @@
                 image: 'images/iphone17(1).png', images: ['images/iphone17(1).png','images/iphone17(2).jpeg','images/iphone17(3).jpeg','images/iphone17(4).jpeg'], 
                 description: "The ultimate iPhone. Forged in titanium, powered by the A19 Pro chip, and featuring a game-changing 48MP camera system.", 
                 fullSpecs: {"Display":"6.9\" LTPO Super Retina XDR OLED","Chip":"A19 Pro Bionic","RAM":"8GB","Camera":"48MP Main + 48MP Ultrawide","Battery":"4,500mAh","Material":"Aerospace-grade Titanium"}, 
-                storageVariants: [{size:'256GB',priceAdd:0},{size:'512GB',priceAdd:20000},{size:'1TB',priceAdd:50000}]
+                storageVariants: [{size:'256GB',priceAdd:0},{size:'512GB',priceAdd:25000},{size:'1TB',priceAdd:60000}]
             },
             { 
                 id: 's24u', name: 'Samsung Galaxy S24 Ultra', basePrice: 165000, oldPrice: 175000, type: 'phone', brand: 'Samsung', available: true, lowStock: false, 
@@ -599,10 +637,9 @@
         let currentSelection = { product: null, storage: '', sim: 'eSIM Only', finalPrice: 0 };
         let activeCategoryFilter = 'all';
         
-        // Storage Keys - updated to v10 for empty load state
-        let cart = JSON.parse(localStorage.getItem('ih_cart_v10')) || [];
-        let wishlist = JSON.parse(localStorage.getItem('ih_wishlist_v10')) || [];
-        let compareList = JSON.parse(localStorage.getItem('ih_compare_v10')) || [];
+        let cart = JSON.parse(localStorage.getItem('ih_cart_v11')) || [];
+        let wishlist = JSON.parse(localStorage.getItem('ih_wishlist_v11')) || [];
+        let compareList = JSON.parse(localStorage.getItem('ih_compare_v11')) || [];
 
         // --- THEME LOGIC ---
         function toggleTheme() {
@@ -836,7 +873,7 @@
                                 ${p.oldPrice ? `<div class="text-gray-400 dark:text-white/40 text-[9px] md:text-[10px] font-bold line-through">KSh ${p.oldPrice.toLocaleString()}</div>` : ''}
                             </div>
                         </div>
-                        <button onclick="event.stopPropagation(); quickAddToCart('${p.id}')" class="w-full bg-gray-100 text-gray-900 dark:bg-white/10 dark:hover:bg-blue-600 hover:bg-gray-200 dark:text-white font-bold py-1.5 md:py-2.5 rounded-full transition-colors text-[10px] md:text-xs flex items-center justify-center gap-2">
+                        <button onclick="event.stopPropagation(); quickAddToCart('${p.id}')" class="w-full bg-gray-100 text-gray-900 dark:bg-white/10 dark:hover:bg-blue-600 hover:bg-gray-200 dark:text-white font-bold py-1.5 md:py-2.5 rounded-xl transition-colors text-[10px] md:text-xs flex items-center justify-center gap-2">
                             🛒 Add to Tray
                         </button>
                     </div>`; 
@@ -869,18 +906,15 @@
             
             const buyBtn = document.getElementById('buyBtn'); 
             const addCartBtn = document.getElementById('addCartBtn'); 
-            const buyBtnText = document.getElementById('buyBtnText'); 
             
             if (p.available) { 
                 buyBtn.disabled = false; addCartBtn.disabled = false; 
                 buyBtn.className = "flex-1 bg-[#25D366] hover:bg-[#20bd5a] text-white font-black py-3.5 md:py-4 rounded-full flex items-center justify-center gap-2 transition-all active:scale-95 shadow-[0_8px_24px_rgba(37,211,102,0.4)] text-xs md:text-sm uppercase tracking-wide"; 
                 addCartBtn.className = "flex-1 bg-gray-200 text-gray-900 dark:bg-white/10 dark:hover:bg-white/20 border border-transparent dark:border-white/20 dark:text-white font-black py-3.5 md:py-4 rounded-full flex items-center justify-center gap-2 transition-all active:scale-95 text-xs md:text-sm uppercase tracking-wide"; 
-                buyBtnText.innerText = "ORDER VIA WHATSAPP"; 
             } else { 
                 buyBtn.disabled = true; addCartBtn.disabled = true; 
                 buyBtn.className = "flex-1 bg-gray-300 dark:bg-gray-800 text-gray-500 font-black py-3.5 md:py-4 rounded-full flex items-center justify-center gap-2 cursor-not-allowed text-xs md:text-sm uppercase tracking-wide"; 
                 addCartBtn.className = "flex-1 bg-gray-200 border border-gray-300 dark:bg-gray-900 dark:border-gray-800 text-gray-500 dark:text-gray-600 font-black py-3.5 md:py-4 rounded-full flex items-center justify-center gap-2 cursor-not-allowed text-xs md:text-sm uppercase tracking-wide"; 
-                buyBtnText.innerText = "OUT OF STOCK"; 
             } 
             
             const inCompare = compareList.includes(p.id);
@@ -911,7 +945,6 @@
             } 
             
             updateStorageHTML(p); 
-            switchTab('specs'); 
             showPage('product-detail-view'); 
         }
 
@@ -919,20 +952,6 @@
             document.getElementById('mainImage').src = src; 
             document.querySelectorAll('.gallery-thumb').forEach(d => { d.classList.remove('border-blue-500'); d.classList.add('dark:border-white/10', 'border-gray-200'); }); 
             element.classList.remove('dark:border-white/10', 'border-gray-200'); element.classList.add('border-blue-500'); 
-        }
-
-        function switchTab(tab) { 
-            document.querySelectorAll('.tab-btn').forEach(btn => { btn.classList.remove('active', 'text-blue-500', 'border-blue-500'); btn.classList.add('text-gray-500', 'dark:text-white/50', 'border-transparent'); }); 
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active')); 
-            
-            const activeBtn = document.querySelector(`[data-tab="${tab}"]`);
-            if(activeBtn) {
-                activeBtn.classList.remove('text-gray-500', 'dark:text-white/50', 'border-transparent');
-                activeBtn.classList.add('active', 'text-blue-500', 'border-blue-500'); 
-            }
-            
-            const tabContent = document.getElementById(`tab-${tab}`);
-            if(tabContent) tabContent.classList.add('active'); 
         }
 
         function updateStorageHTML(product) { 
@@ -1092,7 +1111,7 @@
             msg += `*Device:* ${p.name}\n*Storage:* ${currentSelection.storage}\n`; 
             if (p.type !== 'laptop') msg += `*SIM:* ${currentSelection.sim}\n`; 
             msg += `*Price:* KSh ${currentSelection.finalPrice.toLocaleString()}`; 
-            window.open('https://wa.me/254700000000?text=' + encodeURIComponent(msg), '_blank'); 
+            window.open('https://wa.me/254740262888?text=' + encodeURIComponent(msg), '_blank'); 
         }
 
         function checkoutCart() { 
@@ -1106,7 +1125,7 @@
             }); 
             msg += `\n💰 *TOTAL PAYABLE: KSh ${total.toLocaleString()}*`; 
             
-            window.open('https://wa.me/254700000000?text=' + encodeURIComponent(msg), '_blank'); 
+            window.open('https://wa.me/254740262888?text=' + encodeURIComponent(msg), '_blank'); 
         }
 
         // --- WISHLIST LOGIC ---
@@ -1181,7 +1200,7 @@
                             <h3 class="font-black text-[11px] md:text-sm leading-tight mb-1 md:mb-2 truncate w-full text-gray-900 dark:text-white">${p.name}</h3>
                             <div class="text-blue-600 dark:text-blue-500 text-[11px] md:text-xs font-black mb-2 md:mb-3">KSh ${p.basePrice.toLocaleString()}</div>
                         </div>
-                        <button onclick="quickAddToCart('${p.id}')" class="w-full bg-gray-100 text-gray-900 dark:bg-white/10 dark:hover:bg-blue-600 hover:bg-gray-200 dark:text-white font-bold py-1.5 md:py-2.5 rounded-full transition-colors text-[10px] md:text-xs flex items-center justify-center gap-2">
+                        <button onclick="quickAddToCart('${p.id}')" class="w-full bg-blue-50 dark:bg-blue-600/20 border border-blue-200 dark:border-blue-500/50 text-blue-600 dark:text-blue-400 font-bold py-1.5 md:py-2.5 rounded-xl hover:bg-blue-600 hover:text-white transition-colors text-[10px] md:text-xs">
                             🛒 Add to Tray
                         </button>
                     </div>`; 
