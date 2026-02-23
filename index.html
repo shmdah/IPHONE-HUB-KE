@@ -137,6 +137,11 @@
         input[type="text"], select { background: white; border: 1px solid rgba(0,0,0,0.1); color: #0f172a; }
         html.dark input[type="text"], html.dark select { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; }
 
+        /* --- FOOTER HONEY --- */
+        .wc-brand-footer { width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px 0; opacity: 0.5; transition: opacity 0.3s ease; margin-top: auto; }
+        .wc-brand-footer:hover { opacity: 1; }
+        .wc-brand-text { font-family: 'Poppins', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.6); font-weight: 700; margin-right: 8px; }
+        .wc-brand-icon { width: 20px; height: 20px; background: linear-gradient(135deg, #22c55e, #15803d); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #000; font-size: 9px; box-shadow: 0 0 10px rgba(34, 197, 94, 0.3); }
     </style>
 </head>
 <body>
@@ -179,19 +184,20 @@
         </div>
     </nav>
 
-    <div id="mobile-menu" class="hidden fixed inset-0 z-[110] bg-white/98 dark:bg-black/98 backdrop-blur-3xl flex flex-col items-center justify-center transition-all">
-        <div class="flex flex-col items-center space-y-4 text-xl font-black w-full mb-6 tracking-wide text-gray-900 dark:text-white">
+    <div id="mobile-menu" class="hidden fixed inset-0 z-[110] bg-white/98 dark:bg-black/98 backdrop-blur-3xl flex flex-col items-center py-16 transition-all">
+        <div class="flex flex-col items-center space-y-6 text-2xl font-black w-full tracking-wide text-gray-900 dark:text-white mt-4">
             <button onclick="navigateFromMenu('home')" class="hover:text-blue-500 w-full py-2">HOME</button>
             <button onclick="navigateFromMenu('catalog')" class="hover:text-blue-500 w-full py-2">SHOP ALL</button>
             <button onclick="navigateFromMenu('compare-page')" class="hover:text-blue-500 w-full py-2">COMPARE</button>
             <button onclick="navigateFromMenu('wishlist-page')" class="hover:text-pink-500 w-full py-2">WISHLIST</button>
             <button onclick="navigateFromMenu('contact-page')" class="hover:text-blue-500 w-full py-2">CONTACT</button>
-            
-            <a href="https://www.instagram.com/iphone__hub_ke?igsh=MWtndmpkcTZkZWgzNQ==" target="_blank" class="mt-4 text-3xl text-pink-500 hover:text-pink-400 transition-transform active:scale-95">
+        </div>
+        
+        <div class="mt-auto flex flex-col items-center gap-6">
+            <a href="https://www.instagram.com/iphone__hub_ke?igsh=MWtndmpkcTZkZWgzNQ==" target="_blank" class="text-4xl text-pink-500 hover:text-pink-400 transition-transform active:scale-95">
                 <i class="fab fa-instagram"></i>
             </a>
-
-            <button onclick="toggleMobileMenu()" class="mt-8 text-xs text-gray-500 dark:text-white/40 border border-gray-200 dark:border-white/10 px-6 py-2.5 rounded-full font-bold">CLOSE</button>
+            <button onclick="toggleMobileMenu()" class="text-sm text-gray-500 dark:text-white/40 border border-gray-200 dark:border-white/10 px-8 py-3 rounded-full font-bold">CLOSE</button>
         </div>
     </div>
 
@@ -233,8 +239,8 @@
                 </div>
             </div>
             
-            <div class="w-full flex justify-center py-6 mt-auto">
-                <a href="https://www.whats-cart.com/" target="_blank" class="flex flex-row items-center justify-center gap-2 opacity-100 transition-opacity">
+            <div class="w-full flex justify-center py-6 mt-auto border-t border-gray-200 dark:border-white/5 bg-white/50 dark:bg-black/50 backdrop-blur-md">
+                <a href="https://www.whats-cart.com/" target="_blank" class="flex flex-row items-center justify-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
                     <span class="font-sans text-[10px] text-gray-500 dark:text-white/60 uppercase tracking-[0.2em] font-bold">POWERED BY</span>
                     <div class="w-5 h-5 bg-gradient-to-br from-[#22c55e] to-[#15803d] rounded flex items-center justify-center text-black text-[10px] shadow-sm"><i class="fas fa-shopping-cart"></i></div>
                 </a>
@@ -299,7 +305,7 @@
                             </div>
                         
                         <div class="w-full flex justify-center py-6 mt-auto">
-                            <a href="https://www.whats-cart.com/" target="_blank" class="flex flex-row items-center justify-center gap-2 opacity-100 transition-opacity">
+                            <a href="https://www.whats-cart.com/" target="_blank" class="flex flex-row items-center justify-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
                                 <span class="font-sans text-[10px] text-gray-500 dark:text-white/60 uppercase tracking-[0.2em] font-bold">POWERED BY</span>
                                 <div class="w-5 h-5 bg-gradient-to-br from-[#22c55e] to-[#15803d] rounded flex items-center justify-center text-black text-[10px] shadow-sm"><i class="fas fa-shopping-cart"></i></div>
                             </a>
@@ -342,7 +348,7 @@
                         
                         <div id="fomo-banner" class="hidden mb-6 p-4 md:p-5 rounded-[24px] bg-white/60 dark:bg-[#111] border border-gray-200 dark:border-white/5 shadow-sm backdrop-blur-xl flex flex-row items-center justify-between gap-4">
                             <div class="flex items-center gap-3">
-                                <div class="relative flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-red-100 dark:bg-red-500/20 shrink-0">
+                                <div class="relative flex items-center justify-center w-8 h-8 md:w-10 h-10 rounded-full bg-red-100 dark:bg-red-500/20 shrink-0">
                                     <div class="w-2.5 h-2.5 md:w-3 md:h-3 bg-red-500 rounded-full animate-pulse"></div>
                                 </div>
                                 <div>
@@ -379,7 +385,7 @@
                                 🛒 ADD TO TRAY
                             </button>
                             <button id="buyBtn" onclick="buyNow()" class="flex-1 bg-[#25D366] hover:bg-[#20bd5a] text-white font-black py-3.5 md:py-4 rounded-full flex items-center justify-center gap-2 transition-all active:scale-95 shadow-[0_8px_24px_rgba(37,211,102,0.4)] text-xs md:text-sm uppercase tracking-wide">
-                                <i class="fas fa-bolt text-sm md:text-xl"></i> <span id="buyBtnText">ORDER VIA WHATSAPP</span>
+                                <i class="fab fa-whatsapp text-sm md:text-xl"></i> <span id="buyBtnText">ORDER VIA WHATSAPP</span>
                             </button>
                         </div>
 
@@ -434,7 +440,7 @@
                         </div>
 
                         <button onclick="checkoutCart()" class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white py-3.5 md:py-4 rounded-full font-black transition-all flex items-center justify-center gap-2 md:gap-3 shadow-[0_8px_24px_rgba(37,211,102,0.4)] active:scale-95 tracking-wide text-[11px] md:text-sm uppercase">
-                            <i class="fas fa-bolt text-sm md:text-xl"></i> ORDER VIA WHATSAPP
+                            <i class="fab fa-whatsapp text-sm md:text-xl"></i> ORDER VIA WHATSAPP
                         </button>
                         
                         <div class="w-full flex justify-center pt-5 md:pt-6 mt-2 md:mt-4">
@@ -606,7 +612,7 @@
                 image: 'images/iphone17(1).png', images: ['images/iphone17(1).png','images/iphone17(2).jpeg','images/iphone17(3).jpeg','images/iphone17(4).jpeg'], 
                 description: "The ultimate iPhone. Forged in titanium, powered by the A19 Pro chip, and featuring a game-changing 48MP camera system.", 
                 fullSpecs: {"Display":"6.9\" LTPO Super Retina XDR OLED","Chip":"A19 Pro Bionic","RAM":"8GB","Camera":"48MP Main + 48MP Ultrawide","Battery":"4,500mAh","Material":"Aerospace-grade Titanium"}, 
-                storageVariants: [{size:'256GB',priceAdd:0},{size:'512GB',priceAdd:25000},{size:'1TB',priceAdd:60000}]
+                storageVariants: [{size:'256GB',priceAdd:0},{size:'512GB',priceAdd:20000},{size:'1TB',priceAdd:50000}]
             },
             { 
                 id: 's24u', name: 'Samsung Galaxy S24 Ultra', basePrice: 165000, oldPrice: 175000, type: 'phone', brand: 'Samsung', available: true, lowStock: false, 
@@ -911,6 +917,7 @@
             
             const buyBtn = document.getElementById('buyBtn'); 
             const addCartBtn = document.getElementById('addCartBtn'); 
+            const buyBtnText = document.getElementById('buyBtnText'); 
             
             if (p.available) { 
                 buyBtn.disabled = false; addCartBtn.disabled = false; 
@@ -950,6 +957,7 @@
             } 
             
             updateStorageHTML(p); 
+            switchTab('specs'); 
             showPage('product-detail-view'); 
         }
 
@@ -957,6 +965,20 @@
             document.getElementById('mainImage').src = src; 
             document.querySelectorAll('.gallery-thumb').forEach(d => { d.classList.remove('border-blue-500'); d.classList.add('dark:border-white/10', 'border-gray-200'); }); 
             element.classList.remove('dark:border-white/10', 'border-gray-200'); element.classList.add('border-blue-500'); 
+        }
+
+        function switchTab(tab) { 
+            document.querySelectorAll('.tab-btn').forEach(btn => { btn.classList.remove('active', 'text-blue-500', 'border-blue-500'); btn.classList.add('text-gray-500', 'dark:text-white/50', 'border-transparent'); }); 
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active')); 
+            
+            const activeBtn = document.querySelector(`[data-tab="${tab}"]`);
+            if(activeBtn) {
+                activeBtn.classList.remove('text-gray-500', 'dark:text-white/50', 'border-transparent');
+                activeBtn.classList.add('active', 'text-blue-500', 'border-blue-500'); 
+            }
+            
+            const tabContent = document.getElementById(`tab-${tab}`);
+            if(tabContent) tabContent.classList.add('active'); 
         }
 
         function updateStorageHTML(product) { 
@@ -1318,6 +1340,8 @@
         function renderCompare() { 
             const container = document.getElementById('compare-container'); 
             const emptyState = document.getElementById('compare-empty'); 
+            const head = document.getElementById('compare-head'); 
+            const body = document.getElementById('compare-body'); 
             
             if (compareList.length === 0) { 
                 container.classList.add('hidden'); 
