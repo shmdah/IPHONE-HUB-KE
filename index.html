@@ -184,20 +184,22 @@
         </div>
     </nav>
 
-    <div id="mobile-menu" class="hidden fixed inset-0 z-[110] bg-white/98 dark:bg-black/98 backdrop-blur-3xl flex flex-col items-center py-16 transition-all">
-        <div class="flex flex-col items-center space-y-6 text-2xl font-black w-full tracking-wide text-gray-900 dark:text-white mt-4">
-            <button onclick="navigateFromMenu('home')" class="hover:text-blue-500 w-full py-2">HOME</button>
-            <button onclick="navigateFromMenu('catalog')" class="hover:text-blue-500 w-full py-2">SHOP ALL</button>
-            <button onclick="navigateFromMenu('compare-page')" class="hover:text-blue-500 w-full py-2">COMPARE</button>
-            <button onclick="navigateFromMenu('wishlist-page')" class="hover:text-pink-500 w-full py-2">WISHLIST</button>
-            <button onclick="navigateFromMenu('contact-page')" class="hover:text-blue-500 w-full py-2">CONTACT</button>
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[105] opacity-0 pointer-events-none transition-opacity duration-300 md:hidden" onclick="toggleMobileMenu()"></div>
+    
+    <div id="mobile-menu" class="fixed top-0 right-0 translate-x-full w-[65%] h-full z-[110] bg-white dark:bg-[#0a0a0a] shadow-2xl flex flex-col py-10 px-6 transition-transform duration-300 ease-in-out border-l border-gray-200 dark:border-white/5 md:hidden">
+        <div class="flex flex-col items-start space-y-6 text-lg font-black w-full tracking-wide text-gray-900 dark:text-white mt-4">
+            <button onclick="navigateFromMenu('home')" class="hover:text-blue-500 text-left w-full">HOME</button>
+            <button onclick="navigateFromMenu('catalog')" class="hover:text-blue-500 text-left w-full">SHOP ALL</button>
+            <button onclick="navigateFromMenu('compare-page')" class="hover:text-blue-500 text-left w-full">COMPARE</button>
+            <button onclick="navigateFromMenu('wishlist-page')" class="hover:text-pink-500 text-left w-full">WISHLIST</button>
+            <button onclick="navigateFromMenu('contact-page')" class="hover:text-blue-500 text-left w-full">CONTACT</button>
         </div>
         
-        <div class="mt-auto flex flex-col items-center gap-6">
-            <a href="https://www.instagram.com/iphone__hub_ke?igsh=MWtndmpkcTZkZWgzNQ==" target="_blank" class="text-4xl text-pink-500 hover:text-pink-400 transition-transform active:scale-95">
+        <div class="mt-auto flex flex-col items-start gap-6 w-full border-t border-gray-200 dark:border-white/10 pt-6">
+            <a href="https://www.instagram.com/iphone__hub_ke?igsh=MWtndmpkcTZkZWgzNQ==" target="_blank" class="text-3xl text-pink-500 hover:text-pink-400 transition-transform active:scale-95">
                 <i class="fab fa-instagram"></i>
             </a>
-            <button onclick="toggleMobileMenu()" class="text-sm text-gray-500 dark:text-white/40 border border-gray-200 dark:border-white/10 px-8 py-3 rounded-full font-bold">CLOSE</button>
+            <button onclick="toggleMobileMenu()" class="text-xs text-gray-500 dark:text-white/40 border border-gray-200 dark:border-white/10 px-6 py-2 rounded-full font-bold">CLOSE</button>
         </div>
     </div>
 
@@ -348,7 +350,7 @@
                         
                         <div id="fomo-banner" class="hidden mb-6 p-4 md:p-5 rounded-[24px] bg-white/60 dark:bg-[#111] border border-gray-200 dark:border-white/5 shadow-sm backdrop-blur-xl flex flex-row items-center justify-between gap-4">
                             <div class="flex items-center gap-3">
-                                <div class="relative flex items-center justify-center w-8 h-8 md:w-10 h-10 rounded-full bg-red-100 dark:bg-red-500/20 shrink-0">
+                                <div class="relative flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-red-100 dark:bg-red-500/20 shrink-0">
                                     <div class="w-2.5 h-2.5 md:w-3 md:h-3 bg-red-500 rounded-full animate-pulse"></div>
                                 </div>
                                 <div>
@@ -382,7 +384,7 @@
 
                         <div class="flex flex-col sm:flex-row gap-3 md:gap-4 mb-4">
                             <button id="addCartBtn" onclick="addToCart()" class="flex-1 bg-gray-200 text-gray-900 dark:bg-white/10 dark:hover:bg-white/20 border border-transparent dark:border-white/20 dark:text-white font-black py-3.5 md:py-4 rounded-full flex items-center justify-center gap-2 transition-all active:scale-95 text-xs md:text-sm uppercase tracking-wide">
-                                🛒 ADD TO TRAY
+                                🛒 ADD TO CART
                             </button>
                             <button id="buyBtn" onclick="buyNow()" class="flex-1 bg-[#25D366] hover:bg-[#20bd5a] text-white font-black py-3.5 md:py-4 rounded-full flex items-center justify-center gap-2 transition-all active:scale-95 shadow-[0_8px_24px_rgba(37,211,102,0.4)] text-xs md:text-sm uppercase tracking-wide">
                                 <i class="fab fa-whatsapp text-sm md:text-xl"></i> <span id="buyBtnText">ORDER VIA WHATSAPP</span>
@@ -422,18 +424,18 @@
                     <button onclick="backFromCart()" class="text-[10px] md:text-xs font-bold text-gray-500 dark:text-white/50 flex items-center hover:text-gray-900 dark:hover:text-white transition w-fit">
                         <div class="w-6 h-6 md:w-8 md:h-8 rounded-full bg-gray-200 dark:bg-white/10 flex items-center justify-center mr-2"><i class="fas fa-arrow-left text-[10px] md:text-xs"></i></div> Back to Shop
                     </button>
-                    <button onclick="clearCart()" class="text-[9px] md:text-[10px] font-bold text-red-500 dark:text-red-400 border border-red-200 dark:border-red-500/30 px-3 py-1.5 rounded-full hover:bg-red-50 dark:hover:bg-red-500/10">Clear Tray</button>
+                    <button onclick="clearCart()" class="text-[9px] md:text-[10px] font-bold text-red-500 dark:text-red-400 border border-red-200 dark:border-red-500/30 px-3 py-1.5 rounded-full hover:bg-red-50 dark:hover:bg-red-500/10">Clear Cart</button>
                 </div>
                 
-                <h2 class="text-2xl md:text-3xl font-display font-black mb-4 md:mb-6 tracking-tight text-gray-900 dark:text-white">Your Tray <span id="cart-count-header" class="text-blue-500 text-sm md:text-lg"></span></h2>
+                <h2 class="text-2xl md:text-3xl font-display font-black mb-4 md:mb-6 tracking-tight text-gray-900 dark:text-white">Your Cart <span id="cart-count-header" class="text-blue-500 text-sm md:text-lg"></span></h2>
                 
                 <div class="flex flex-col lg:flex-row gap-6 md:gap-8 items-start">
                     
-                    <div class="flex-1 w-full overflow-y-auto hide-scroll order-2 lg:order-1">
+                    <div class="flex-1 w-full overflow-y-auto hide-scroll order-1 lg:order-1">
                         <div id="cart-items-container" class="space-y-3 md:space-y-4"></div>
                     </div>
 
-                    <div class="w-full lg:w-[350px] glass p-5 md:p-6 rounded-2xl md:rounded-3xl lg:sticky top-[90px] order-1 lg:order-2">
+                    <div class="w-full lg:w-[350px] glass p-5 md:p-6 rounded-2xl md:rounded-3xl lg:sticky top-[90px] order-2 lg:order-2">
                         <div class="flex justify-between items-end mb-5 md:mb-6 border-b border-gray-200 dark:border-white/10 pb-4 md:pb-6">
                             <span class="text-[10px] md:text-sm font-bold text-gray-500 dark:text-white/50 uppercase tracking-widest">Total to Pay</span>
                             <span id="cart-total" class="text-xl md:text-3xl font-black text-gray-900 dark:text-white">KSh 0</span>
@@ -515,27 +517,27 @@
                     <div class="w-6 h-6 md:w-8 md:h-8 rounded-full bg-gray-200 dark:bg-white/10 flex items-center justify-center mr-2"><i class="fas fa-arrow-left text-[10px] md:text-xs"></i></div> Back to Home
                 </button>
 
-                <div class="glass p-8 md:p-12 rounded-[30px] w-full max-w-md shadow-2xl bg-white/80 dark:bg-black/60 backdrop-blur-xl border border-gray-200 dark:border-white/10 text-center mt-10">
-                    <div class="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-500/20 flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-location-dot text-blue-600 dark:text-blue-500 text-2xl"></i>
+                <div class="glass p-6 md:p-12 rounded-[24px] md:rounded-[30px] w-full max-w-sm md:max-w-md shadow-2xl bg-white/80 dark:bg-black/60 backdrop-blur-xl border border-gray-200 dark:border-white/10 text-center mt-6 md:mt-10">
+                    <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-blue-100 dark:bg-blue-500/20 flex items-center justify-center mx-auto mb-4 md:mb-6">
+                        <i class="fas fa-location-dot text-blue-600 dark:text-blue-500 text-xl md:text-2xl"></i>
                     </div>
-                    <h2 class="text-3xl font-display font-black mb-2 text-gray-900 dark:text-white">IPHONEHUB</h2>
-                    <p class="text-gray-500 dark:text-white/50 text-xs uppercase tracking-widest mb-8">Nairobi, Kenya</p>
+                    <h2 class="text-2xl md:text-3xl font-display font-black mb-1 md:mb-2 text-gray-900 dark:text-white">IPHONEHUB</h2>
+                    <p class="text-gray-500 dark:text-white/50 text-[10px] md:text-xs uppercase tracking-widest mb-6 md:mb-8">Nairobi, Kenya</p>
                     
-                    <div class="bg-gray-50 dark:bg-white/5 rounded-2xl p-4 mb-8 text-left flex items-start gap-4 border border-gray-100 dark:border-transparent">
-                        <i class="fas fa-map-pin text-gray-400 dark:text-white/50 mt-1"></i>
-                        <div class="text-sm text-gray-700 dark:text-white/80 leading-relaxed">
-                            <span class="font-black block text-gray-900 dark:text-white text-base mb-1">THE BAZAAR</span>
+                    <div class="bg-gray-50 dark:bg-white/5 rounded-xl md:rounded-2xl p-3 md:p-4 mb-6 md:mb-8 text-left flex items-start gap-3 md:gap-4 border border-gray-100 dark:border-transparent">
+                        <i class="fas fa-map-pin text-gray-400 dark:text-white/50 mt-1 text-xs md:text-base"></i>
+                        <div class="text-xs md:text-sm text-gray-700 dark:text-white/80 leading-relaxed">
+                            <span class="font-black block text-gray-900 dark:text-white text-sm md:text-base mb-1">THE BAZAAR</span>
                             11TH FLOOR, Room 1105
                         </div>
                     </div>
                     
-                    <div class="flex flex-col sm:flex-row gap-3 mb-6">
-                        <a href="tel:0740262888" class="flex-1 bg-gray-200 dark:bg-white text-gray-900 dark:text-black py-4 rounded-xl font-black text-xs active:scale-95 transition-transform flex items-center justify-center gap-2">
+                    <div class="flex flex-col sm:flex-row gap-2 md:gap-3 mb-4 md:mb-6">
+                        <a href="tel:0740262888" class="flex-1 bg-gray-200 dark:bg-white text-gray-900 dark:text-black py-3 md:py-4 rounded-xl font-black text-xs active:scale-95 transition-transform flex items-center justify-center gap-2">
                             <i class="fas fa-phone"></i> CALL US
                         </a>
-                        <a href="https://wa.me/254740262888" target="_blank" class="flex-1 bg-[#25D366] hover:bg-[#20bd5a] text-white py-4 rounded-xl font-black text-xs active:scale-95 transition-transform shadow-[0_4px_15px_rgba(37,211,102,0.3)] flex items-center justify-center gap-2">
-                            <i class="fab fa-whatsapp text-lg"></i> WHATSAPP
+                        <a href="https://wa.me/254740262888" target="_blank" class="flex-1 bg-[#25D366] hover:bg-[#20bd5a] text-white py-3 md:py-4 rounded-xl font-black text-xs active:scale-95 transition-transform shadow-[0_4px_15px_rgba(37,211,102,0.3)] flex items-center justify-center gap-2">
+                            <i class="fab fa-whatsapp text-sm md:text-lg"></i> WHATSAPP
                         </a>
                     </div>
                     
@@ -578,32 +580,6 @@
         </div>
     </div>
 
-    <div id="filter-sidebar" class="fixed top-[70px] right-[-100%] w-[280px] h-[calc(100%-70px)] bg-white/98 dark:bg-[rgba(0,0,0,0.98)] backdrop-blur-[20px] z-[100] transition-right duration-300 ease-in-out p-5 overflow-y-auto border-l border-gray-200 dark:border-white/10 md:hidden">
-        <div class="flex justify-between items-center mb-8 text-gray-900 dark:text-white">
-            <h3 class="text-xl font-black uppercase tracking-wide">Filters</h3>
-            <button onclick="toggleFilters()" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/10 flex items-center justify-center"><i class="fas fa-times"></i></button>
-        </div>
-        
-        <div class="mb-8">
-            <h4 class="font-bold mb-4 text-xs uppercase tracking-widest text-gray-500 dark:text-white/50">Category</h4>
-            <div class="space-y-4 text-gray-700 dark:text-gray-300">
-                <label class="flex items-center gap-3 text-sm font-bold"><input type="radio" name="catFilterMob" value="all" checked onchange="filterCategoryMob('all')" class="accent-blue-500 w-5 h-5"> All Devices</label>
-                <label class="flex items-center gap-3 text-sm font-bold"><input type="radio" name="catFilterMob" value="phone" onchange="filterCategoryMob('phone')" class="accent-blue-500 w-5 h-5"> Smartphones</label>
-                <label class="flex items-center gap-3 text-sm font-bold"><input type="radio" name="catFilterMob" value="laptop" onchange="filterCategoryMob('laptop')" class="accent-blue-500 w-5 h-5"> MacBooks</label>
-            </div>
-        </div>
-
-        <div class="mb-8">
-            <h4 class="font-bold mb-4 text-xs uppercase tracking-widest text-gray-500 dark:text-white/50">Availability</h4>
-            <div class="space-y-4 text-gray-700 dark:text-gray-300">
-                <label class="flex items-center gap-3 text-sm font-bold"><input type="checkbox" id="mobInStock" onchange="applyFilters()" class="accent-blue-500 w-5 h-5"> In Stock Only</label>
-                <label class="flex items-center gap-3 text-sm font-bold"><input type="checkbox" id="mobOnSale" onchange="applyFilters()" class="accent-blue-500 w-5 h-5"> On Sale</label>
-            </div>
-        </div>
-        
-        <button onclick="clearFilters(); toggleFilters();" class="w-full py-4 rounded-xl border border-gray-300 dark:border-white/20 text-xs font-black uppercase tracking-widest text-gray-900 dark:text-white active:bg-gray-100 dark:active:bg-white/10 transition">Clear All</button>
-    </div>
-
     <script>
         // --- LOCAL DATABASE ---
         const products = [
@@ -612,7 +588,7 @@
                 image: 'images/iphone17(1).png', images: ['images/iphone17(1).png','images/iphone17(2).jpeg','images/iphone17(3).jpeg','images/iphone17(4).jpeg'], 
                 description: "The ultimate iPhone. Forged in titanium, powered by the A19 Pro chip, and featuring a game-changing 48MP camera system.", 
                 fullSpecs: {"Display":"6.9\" LTPO Super Retina XDR OLED","Chip":"A19 Pro Bionic","RAM":"8GB","Camera":"48MP Main + 48MP Ultrawide","Battery":"4,500mAh","Material":"Aerospace-grade Titanium"}, 
-                storageVariants: [{size:'256GB',priceAdd:0},{size:'512GB',priceAdd:20000},{size:'1TB',priceAdd:50000}]
+                storageVariants: [{size:'256GB',priceAdd:0},{size:'512GB',priceAdd:25000},{size:'1TB',priceAdd:60000}]
             },
             { 
                 id: 's24u', name: 'Samsung Galaxy S24 Ultra', basePrice: 165000, oldPrice: 175000, type: 'phone', brand: 'Samsung', available: true, lowStock: false, 
@@ -648,9 +624,9 @@
         let currentSelection = { product: null, storage: '', sim: 'eSIM Only', finalPrice: 0 };
         let activeCategoryFilter = 'all';
         
-        let cart = JSON.parse(localStorage.getItem('ih_cart_v11')) || [];
-        let wishlist = JSON.parse(localStorage.getItem('ih_wishlist_v11')) || [];
-        let compareList = JSON.parse(localStorage.getItem('ih_compare_v11')) || [];
+        let cart = JSON.parse(localStorage.getItem('ih_cart_v12')) || [];
+        let wishlist = JSON.parse(localStorage.getItem('ih_wishlist_v12')) || [];
+        let compareList = JSON.parse(localStorage.getItem('ih_compare_v12')) || [];
 
         // --- THEME LOGIC ---
         function toggleTheme() {
@@ -769,7 +745,23 @@
         }
 
         function navigateFromMenu(id) { toggleMobileMenu(); setTimeout(() => showPage(id), 200); }
-        function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+        
+        function toggleMobileMenu() { 
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-menu-overlay');
+            
+            if (menu.classList.contains('translate-x-full')) {
+                menu.classList.remove('translate-x-full');
+                menu.classList.add('translate-x-0');
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                overlay.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                menu.classList.add('translate-x-full');
+                menu.classList.remove('translate-x-0');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                overlay.classList.remove('opacity-100', 'pointer-events-auto');
+            }
+        }
 
         // --- HOME PROMO CATEGORY FILTER (MELONS) ---
         function filterFromHome(brandOrType) {
@@ -885,7 +877,7 @@
                             </div>
                         </div>
                         <button onclick="event.stopPropagation(); quickAddToCart('${p.id}')" class="w-full bg-gray-100 text-gray-900 dark:bg-white/10 dark:hover:bg-blue-600 hover:bg-gray-200 dark:text-white font-bold py-1.5 md:py-2.5 rounded-xl transition-colors text-[10px] md:text-xs flex items-center justify-center gap-2">
-                            🛒 Add to Tray
+                            🛒 Add to Cart
                         </button>
                     </div>`; 
             }); 
@@ -917,7 +909,6 @@
             
             const buyBtn = document.getElementById('buyBtn'); 
             const addCartBtn = document.getElementById('addCartBtn'); 
-            const buyBtnText = document.getElementById('buyBtnText'); 
             
             if (p.available) { 
                 buyBtn.disabled = false; addCartBtn.disabled = false; 
@@ -1043,7 +1034,7 @@
             
             localStorage.setItem('ih_cart_v11', JSON.stringify(cart)); 
             updateCartUI(); 
-            showToast("Added to Tray"); 
+            showToast("Added to Cart"); 
             
             // Cart Honey Pulse Animation
             const cartIcon = document.getElementById('cart-icon'); 
@@ -1070,7 +1061,7 @@
         }
 
         function clearCart() { 
-            if(confirm("Clear all items from your tray?")) { 
+            if(confirm("Clear all items from your cart?")) { 
                 cart = []; 
                 localStorage.setItem('ih_cart_v11', JSON.stringify(cart)); 
                 updateCartUI(); 
@@ -1097,7 +1088,7 @@
                 let total = 0; 
                 
                 if(cart.length === 0) { 
-                    container.innerHTML = '<div class="flex flex-col items-center justify-center py-20 text-gray-400 dark:text-white/30"><i class="fas fa-shopping-cart text-5xl mb-4"></i><p class="text-sm font-bold uppercase tracking-widest">Your tray is empty</p></div>'; 
+                    container.innerHTML = '<div class="flex flex-col items-center justify-center py-20 text-gray-400 dark:text-white/30"><i class="fas fa-shopping-cart text-5xl mb-4"></i><p class="text-sm font-bold uppercase tracking-widest">Your cart is empty</p></div>'; 
                 } else { 
                     cart.forEach(item => { 
                         total += (item.price * item.qty); 
@@ -1142,7 +1133,7 @@
         }
 
         function checkoutCart() { 
-            if(cart.length === 0) return showToast("Tray is empty!"); 
+            if(cart.length === 0) return showToast("Cart is empty!"); 
 
             let total = 0; 
             let msg = '⚡ *IPHONEHUB: CART CHECKOUT*\n\n'; 
@@ -1228,7 +1219,7 @@
                             <div class="text-blue-600 dark:text-blue-500 text-[11px] md:text-xs font-black mb-2 md:mb-3">KSh ${p.basePrice.toLocaleString()}</div>
                         </div>
                         <button onclick="quickAddToCart('${p.id}')" class="w-full bg-blue-50 dark:bg-blue-600/20 border border-blue-200 dark:border-blue-500/50 text-blue-600 dark:text-blue-400 font-bold py-1.5 md:py-2.5 rounded-xl hover:bg-blue-600 hover:text-white transition-colors text-[10px] md:text-xs">
-                            🛒 Add to Tray
+                            🛒 Add to Cart
                         </button>
                     </div>`; 
                 } 
@@ -1367,7 +1358,7 @@
                     </div>
                     <p class="text-[11px] md:text-sm font-black text-gray-900 dark:text-white leading-tight">${p.name}</p>
                     <p class="text-[10px] md:text-xs text-blue-600 dark:text-blue-400 font-bold mt-1 mb-3 md:mb-4">KSh ${p.basePrice.toLocaleString()}</p>
-                    <button onclick="quickAddToCart('${p.id}')" class="w-full bg-gray-100 text-gray-900 dark:bg-white/10 dark:hover:bg-white/20 dark:text-white hover:bg-gray-200 text-[10px] md:text-xs font-bold py-2 md:py-2.5 rounded-full transition-colors mt-auto">🛒 Add to Tray</button>
+                    <button onclick="quickAddToCart('${p.id}')" class="w-full bg-gray-100 text-gray-900 dark:bg-white/10 dark:hover:bg-white/20 dark:text-white hover:bg-gray-200 text-[10px] md:text-xs font-bold py-2 md:py-2.5 rounded-full transition-colors mt-auto">🛒 Add to Cart</button>
                 </div>`;
             });
             html += `</div>`;
